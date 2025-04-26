@@ -1,12 +1,30 @@
 from django import forms
 from .models import Message
+from django.core.validators import EmailValidator
 
-class ContactForm(forms.ModelForm):
-    class Meta:
-        model = Message
-        fields = ['name', 'email', 'message']
-        widgets = {
-            'name': forms.TextInput(attrs={'class': 'form-control'}),
-            'email': forms.EmailInput(attrs={'class': 'form-control'}),
-            'message': forms.Textarea(attrs={'class': 'form-control'})
-        }
+class ContactForm(forms.Form):
+    name = forms.CharField(
+        max_length=100,
+        required=True,
+        strip=True,  # Removes leading and trailing whitespace
+    )
+    email = forms.EmailField(
+        required=True,
+        validators=[EmailValidator()]
+    )
+    message = forms.CharField(
+        required=True,
+        widget=forms.Textarea,
+        max_length=2000
+    )
+
+    def clean(self):
+        cleaned_data = super().clean()
+        # Additional custom validation if needed
+        return cleaned_data
+
+    def clean_message(self):
+        message = self.cleaned_data['message']
+        # Strip HTML tags
+        cleaned_message = strip_tags(message)
+        return cleaned_message
