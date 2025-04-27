@@ -6,10 +6,10 @@ from .forms import ContactForm
 from django.views.decorators.csrf import csrf_protect
 from django.http import JsonResponse, HttpResponse
 from django.utils.html import strip_tags
-
+from .models import GladysOro
 
 def home(request):
-    return HttpResponse("Welcome to my portfolio!")
+     return HttpResponse("Welcome to my portfolio!")  # This needs to change
 
 class PortfolioView(TemplateView):
     template_name = 'index.html'
@@ -44,3 +44,20 @@ def portfolio_view(request):
             return JsonResponse({'status': 'success'})
         return JsonResponse({'status': 'error'}, status=400)
     return render(request, 'portfolio.html')
+
+
+
+def about_view(request):
+    gladys = GladysOro()
+    context = {
+        'person': gladys,
+        'journey': gladys.journey(),
+        'expertise': gladys.expertise(),
+        'education': gladys.education(),
+        'interests': gladys.interests(),
+        'certifications': gladys.certifications(),
+        'current_project': gladys.get_current_project(),
+        'motto': gladys.motto
+    }
+    print("Context:", context)  # Debug print
+    return render(request, 'core/about.html', context)

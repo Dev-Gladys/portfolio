@@ -1,18 +1,21 @@
 {% extends 'base.html' %} {% load static %} {% block content %}
-<header class="hero-section">
-  <div class="container">
-    <h1 class="fade-in">Gladys Oro</h1>
-    <p class="lead">Software Developer</p>
-  </div>
-</header>
 
-<section id="about" class="section">
+<!-- Home Section -->
+
+<section id="home" class="section-content">
+  <div class="container">
+    <h1>Hi, my name is Gladys Oro</h1>
+    <div class="typing-container">I am a <span id="typing-text"></span></div>
+  </div>
+</section>
+
+<section id="about" class="section-content">
   <div class="container">
     <h2>About Me</h2>
-    <div class="row">
-      <div class="col-md-8 fade-in">
-        <!-- Add your about content -->
-      </div>
+    <div class="code-structure">
+      <pre>
+              <code id="about-code"></code>
+          </pre>
     </div>
   </div>
 </section>

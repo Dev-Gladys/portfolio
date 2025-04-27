@@ -1,0 +1,267 @@
+/* Custom cursor for the entire site 
+/* Reset and Base Styles */
+:root {
+  --primary-color: #1db954;
+  --bg-color: #121212;
+  --text-color: #ffffff;
+}
+
+body {
+  background-color: var(--bg-color) !important; /* Override Bootstrap */
+  color: var(--text-color) !important;
+  font-family: "Poppins", sans-serif !important;
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+}
+
+/* Custom cursor */
+* {
+  cursor: crosshair !important;
+}
+
+/* Override Bootstrap navbar styles */
+.navbar {
+  background-color: rgba(18, 18, 18, 0.95) !important;
+  backdrop-filter: blur(5px);
+  padding: 1rem 4rem !important;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+}
+
+/* Logo styles */
+.navbar-brand.logo {
+  font-size: 30px !important;
+  font-weight: 700 !important;
+  color: var(--text-color) !important;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.navbar-brand.logo:hover {
+  color: var(--primary-color) !important;
+}
+
+/* Navigation links */
+.navbar-nav .nav-link {
+  font-size: 30px !important;
+  color: var(--text-color) !important;
+  margin-left: 2rem;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover {
+  color: var(--primary-color) !important;
+  text-decoration: none;
+}
+
+/* Underline effect for nav links */
+.navbar-nav .nav-link::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -5px;
+  left: 0;
+  background-color: var(--primary-color);
+  transition: width 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover::after {
+  width: 100%;
+}
+
+/* Custom cursor styles */
+.custom-cursor {
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--primary-color);
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  transition: transform 0.2s ease;
+  transform-origin: center center;
+}
+
+.custom-cursor.active {
+  transform: scale(0.5);
+  background-color: var(--primary-color);
+}
+
+/* Section styling */
+section {
+  padding: 100px 20px;
+  min-height: 100vh;
+  margin-left: 20px;
+  border-bottom: 2px solid var(--primary-color);
+}
+
+/* Home section */
+#home {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+#home h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  color: var(--text-color);
+}
+
+.typing-container {
+  font-size: 2.5rem;
+  color: var(--primary-color);
+}
+
+/* Override Bootstrap container padding */
+.container,
+.container-fluid {
+  padding-top: 5px;
+}
+
+/* Hamburger menu color override */
+.navbar-toggler {
+  border-color: var(--text-color) !important;
+}
+
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 0.9)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 1rem 2rem !important;
+  }
+
+  .navbar-brand.logo {
+    font-size: 32px !important;
+  }
+
+  .navbar-nav .nav-link {
+    font-size: 24px !important;
+    margin-left: 0;
+    padding: 0.5rem 0;
+  }
+
+  #home h1 {
+    font-size: 2.5rem;
+  }
+
+  .typing-container {
+    font-size: 2rem;
+  }
+}
+
+/* Override any Bootstrap background classes */
+.bg-light,
+.bg-white,
+.bg-dark {
+  background-color: var(--bg-color) !important;
+}
+
+/* Override Bootstrap text colors if needed */
+.text-dark,
+.text-black {
+  color: var(--text-color) !important;
+}
+
+/* Add to your styles.css */
+.code-structure {
+  background-color: #1e1e1e;
+  border-radius: 10px;
+  padding: 2rem;
+  margin: 2rem 0;
+  width: 100%;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.code-structure pre {
+  margin: 0;
+  white-space: pre-wrap;
+  font-family: "Fira Code", "Consolas", monospace;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #d4d4d4;
+  overflow-x: auto;
+}
+
+.code-structure code {
+  background: transparent;
+  padding: 0;
+}
+
+/* Syntax highlighting */
+.code-structure .string {
+  color: #ce9178;
+}
+
+.code-structure .comment {
+  color: #6a9955;
+  font-style: italic;
+}
+
+.code-structure .class-name {
+  color: #4ec9b0;
+}
+
+.code-structure .function {
+  color: #dcdcaa;
+}
+
+.code-structure .keyword {
+  color: #569cd6;
+}
+
+/* Section styling */
+#about {
+  padding: 80px 0;
+}
+
+#about h2 {
+  color: #ffffff;
+  margin-bottom: 2rem;
+  font-size: 2.5rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .code-structure {
+    padding: 1rem;
+    font-size: 0.9rem;
+  }
+
+  .code-structure pre {
+    font-size: 0.9rem;
+  }
+}
+
+/* Optional: Add a subtle hover effect */
+.code-structure:hover {
+  transform: translateY(-2px);
+  transition: transform 0.3s ease;
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+}
+/* Optional: Add a code editor-like line number effect */
+.code-structure pre {
+  counter-reset: line;
+}
+
+.code-structure pre > span {
+  display: block;
+}
+
+.code-structure pre > span:before {
+  counter-increment: line;
+  content: counter(line);
+  display: inline-block;
+  padding: 0 0.5em;
+  margin-right: 0.5em;
+  color: #858585;
+  border-right: 1px solid #404040;
+}

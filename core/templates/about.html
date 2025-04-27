@@ -1,0 +1,36 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+<section id="about" class="section-content">
+  <div class="container">
+    <h2>About Me</h2>
+    <div class="code-structure">
+      <pre><code class="language-python">
+# About Gladys Oro
+class <span class="class-name">GladysOro</span>:
+    """
+    <span class="comment">Passionate about turning ideas into code
+    Building digital experiences one line at a time</span>
+    """
+    
+    def __init__(self):
+        self.name = <span class="string">'{{ person.name }}'</span>
+        self.role = <span class="string">'{{ person.role }}'</span>
+        self.location = <span class="string">'{{ person.location }}'</span>
+        
+    def journey(self):
+        return [{% for item in journey %}
+            {<span class="string">'{{ item.keys|first }}'</span>: <span class="string">'{{ item.values|first }}'</span>},{% endfor %}
+        ]
+        
+    def expertise(self):
+        return {{% for category, skills in expertise.items %}
+            <span class="string">'{{ category }}'</span>: [{% for skill in skills %}
+                <span class="string">'{{ skill }}'</span>,{% endfor %}
+            ],{% endfor %}
+        }
+    
+    # Life motto
+    motto = <span class="string">"{{ motto }}"</span></code></pre>
+    </div>
+  </div>
+</section>
+{% endblock %}
