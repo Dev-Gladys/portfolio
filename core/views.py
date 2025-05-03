@@ -48,7 +48,17 @@ def portfolio_view(request):
 
 
 def about_view(request):
-    gladys = GladysOro()
+    # Get the first profile or create one if it doesn't exist
+    gladys, created = GladysOro.objects.get_or_create(
+        pk=1,
+        defaults={
+            'name': 'Gladys Oro',
+            'role': 'Software Developer',
+            'location': 'United States',
+            'email': 'your-email@domain.com'
+        }
+    )
+    
     context = {
         'person': gladys,
         'journey': gladys.journey(),
@@ -59,5 +69,27 @@ def about_view(request):
         'current_project': gladys.get_current_project(),
         'motto': gladys.motto
     }
-    print("Context:", context)  # Debug print
-    return render(request, 'core/about.html', context)
+    return render(request, 'about.html', context)
+
+
+
+
+# def project_view(request):
+#     projects = [
+#         {
+#             'title': 'Project Title 1',
+#             'description': 'Project description goes here',
+#             'image': 'https://placehold.co/600x400/1a1a1a/ffffff?text=Project+1'
+#         },
+#         {
+#             'title': 'Project Title 2',
+#             'description': 'Project description goes here',
+#             'image': 'https://placehold.co/600x400/1a1a1a/ffffff?text=Project+2'
+#         },
+#         {
+#             'title': 'Project Title 3',
+#             'description': 'Project description goes here',
+#             'image': 'https://placehold.co/600x400/1a1a1a/ffffff?text=Project+3'
+#         }
+#     ]
+#     return render(request, 'project.html', {'projects': projects})

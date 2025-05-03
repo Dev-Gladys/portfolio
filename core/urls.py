@@ -1,10 +1,10 @@
 from django.urls import path
 from .views import about_view
 from core import views
-from core.views import PortfolioView, about_view
+from core.views import  about_view, project_view, PortfolioView
 
 urlpatterns = [
-    path('', views.home, name='home'),
-    path('portfolio/', PortfolioView.as_view(), name='portfolio'),
+    path('', PortfolioView.as_view(), name='home'), 
     path('about/', about_view, name='about'),
+    path('projects/', project_view, name='projects'),
 ]

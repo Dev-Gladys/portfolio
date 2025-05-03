@@ -265,3 +265,139 @@ section {
   color: #858585;
   border-right: 1px solid #404040;
 }
+
+/* Add to your styles.css */
+.projects-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  padding: 4rem 0;
+  perspective: 1000px;
+}
+
+.project-stack {
+  position: relative;
+  width: 300px;
+  height: 400px;
+  transition: all 0.3s ease;
+}
+
+.project-card {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 15px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.project-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: all 0.5s ease;
+}
+
+.project-info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 20px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+  color: white;
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+}
+
+/* Stacking effect */
+.card1 {
+  transform: translateY(-20px) rotate(-3deg);
+}
+
+.card2 {
+  transform: translateY(0) rotate(0deg);
+}
+
+.card3 {
+  transform: translateY(20px) rotate(3deg);
+}
+
+/* Hover effects */
+.project-stack:hover .project-card {
+  transform: translateY(0) rotate(0) scale(1.1);
+}
+
+.project-stack:hover .project-info {
+  transform: translateY(0);
+}
+
+/* Individual hover animations */
+.project-stack:hover .card1 {
+  transform: translateX(-50%) rotate(-15deg) scale(0.9);
+}
+
+.project-stack:hover .card2 {
+  transform: translateY(-10px) scale(1.1);
+  z-index: 3;
+}
+
+.project-stack:hover .card3 {
+  transform: translateX(50%) rotate(15deg) scale(0.9);
+}
+
+/* Add glow effect on hover */
+.project-stack:hover .project-card::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0.1),
+    rgba(255, 255, 255, 0)
+  );
+  pointer-events: none;
+}
+
+/* Responsive design */
+@media (max-width: 992px) {
+  .projects-container {
+    flex-direction: column;
+    gap: 4rem;
+  }
+
+  .project-stack {
+    width: 280px;
+    height: 380px;
+  }
+}
+
+/* Optional: Add animation for initial load */
+@keyframes stackIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.project-stack {
+  animation: stackIn 0.6s ease forwards;
+}
+
+.project-stack:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.project-stack:nth-child(3) {
+  animation-delay: 0.4s;
+}
