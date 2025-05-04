@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-// Add to your existing cursor.js or create a new file
+//  cursor.js or create a new file
 document.addEventListener("DOMContentLoaded", function () {
   // Typing effect
   const typed = new Typed("#typing-text", {
@@ -23,12 +23,10 @@ document.addEventListener("DOMContentLoaded", function () {
       "Full Stack Engineer",
       "Problem Solver",
       "Tech Enthusiast",
-      "Code Craftsman",
-      "UI/UX Developer",
-      "Database Administrator",
+      "Code Craftswoman",
       "API Developer",
-      "Cloud Computing Expert",
-      "DevOps Engineer",
+      "AWS Practitioner",
+      ,
     ],
     typeSpeed: 50,
     backSpeed: 30,
@@ -51,7 +49,7 @@ document.addEventListener("DOMContentLoaded", function () {
   aboutCode.textContent = formattedCode;
 });
 
-// Add to your scripts.js
+// Project stack hover effect
 document.addEventListener("DOMContentLoaded", function () {
   const projectStacks = document.querySelectorAll(".project-stack");
 
@@ -74,4 +72,34 @@ document.addEventListener("DOMContentLoaded", function () {
       stack.style.transform = "perspective(1000px) rotateX(0) rotateY(0)";
     });
   });
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+  const contactBtn = document.getElementById("contact-btn");
+  const contactForm = document.getElementById("contact-form");
+
+  if (contactBtn && contactForm) {
+    contactBtn.addEventListener("click", function () {
+      if (contactForm.classList.contains("contact-form-hidden")) {
+        contactForm.classList.remove("contact-form-hidden");
+        contactForm.classList.add("contact-form-visible");
+        contactForm.scrollIntoView({ behavior: "smooth", block: "start" });
+      } else {
+        contactForm.classList.remove("contact-form-visible");
+        contactForm.classList.add("contact-form-hidden");
+      }
+    });
+  }
+
+  // Form submission handling
+  const form = document.querySelector(".form-container");
+  if (form) {
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      // Add your form submission logic here
+      alert("Form would submit here in a real implementation");
+      this.reset();
+      contactForm.classList.add("contact-form-hidden");
+    });
+  }
 });

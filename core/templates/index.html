@@ -9,61 +9,193 @@
   </div>
 </section>
 
-<section id="about" class="section-content">
-  <div class="container">
-    <h2>About Me</h2>
-    <div class="code-structure">
-      <pre>
-              <code id="about-code"></code>
-          </pre>
-    </div>
-  </div>
-</section>
 
-<section id="skills" class="section">
-  <div class="container">
-    <h2>Skills</h2>
-    <div class="row skills-container fade-in">
-      <!-- Add your skills -->
-    </div>
-  </div>
-</section>
 
 <section id="projects" class="section">
   <div class="container">
     <h2>Projects</h2>
-    <div class="row">
-      {% for project in projects %}
-      <div class="col-md-6 col-lg-3 mb-4 fade-in">
-        <div class="card project-card">
-          <img
-            src="{{ project.thumbnail.url }}"
-            class="card-img-top"
-            alt="{{ project.title }}"
-          />
-          <div class="card-body">
-            <h5 class="card-title">{{ project.title }}</h5>
-            <p class="card-text">{{ project.description }}</p>
-            <a href="{{ project.url }}" class="btn btn-primary">View Project</a>
+    <div class="projects-container">
+      <!-- Stack 1 -->
+      <div class="project-stack">
+        <div class="project-card card1">
+          <img src="{% static 'images/img-1.jpg' %}" alt="Project A" />
+          <div class="project-info">
+            <h3>Project A</h3>
+            <p>Description for project A</p>
           </div>
         </div>
       </div>
-      {% endfor %}
+
+      <!-- Stack 2 -->
+      <div class="project-stack">
+        <div class="project-card card2">
+          <img src="{% static 'images/img-2.jpg' %}" alt="Project B" />
+          <div class="project-info">
+            <h3>Project B</h3>
+            <p>Description for project B</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stack 3 -->
+      <div class="project-stack">
+        <div class="project-card card3">
+          <img src="{% static 'images/img-3.jpg' %}" alt="Project C" />
+          <div class="project-info">
+            <h3>Project C</h3>
+            <p>Description for project C</p>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
-<section id="contact" class="section">
+
+
+
+<section id="about" class="section-content">
   <div class="container">
-    <h2>Contact Me</h2>
-    <div class="row">
-      <div class="col-md-6 fade-in">
-        <form method="post">
-          {% csrf_token %} {{ form.as_p }}
-          <button type="submit" class="btn btn-primary">Send Message</button>
+    <h2>About Me</h2>
+    <div class="code-structure">
+      <pre><code class="language-javascript">
+      <pre><code>
+  class GladysOro {
+  // Passionate about turning ideas into code
+  // Building digital experiences one line at a time
+  constructor() {
+    this.name = '{{ person.name }}';
+    this.role = '{{ person.role }}';
+    this.location = '{{ person.location }}';
+    this.email = '{{ person.email }}';
+  }
+
+  experience() {
+    return [
+    {% for entry in journey %}
+    {% for year, role in entry.items %}{'{{ year }}': '{{ role }}' }{% if not forloop.last %},{% endif %}{% endfor %}
+    {% endfor %}
+    ];
+  }
+
+  skills() {
+    return {
+      frontEnd: [
+        {% for skill in expertise.frontEnd %} '{{ skill }}'{% if not forloop.last %},{% endif %}{% endfor %}
+      ],
+      backEnd: [
+        {% for skill in expertise.backEnd %}'{{ skill }}'{% if not forloop.last %},{% endif %} {% endfor %}
+      ],
+      tools: [
+        {% for tool in expertise.tools %} '{{ tool }}'{% if not forloop.last %},{% endif %} {% endfor %}
+      ],
+      softSkills: [
+        {% for s in expertise.softSkills %}'{{ s }}'{% if not forloop.last %},{% endif %}{% endfor %}
+      ]
+    };
+  }
+
+    certifications() {
+      return [
+        {% for cert in certifications %}
+        { name: '{{ cert.name }}', year: '{{ cert.year }}' }{% if not forloop.last %},{% endif %}
+        {% endfor %}
+      ];
+  }
+
+    education() {
+      return [
+        {% for ed in education %}
+        { degree: '{{ ed.degree }}', institution: '{{ ed.institution }}' }{% if not forloop.last %},{% endif %}
+        {% endfor %}
+      ];
+    }
+
+    interests() {
+      return [
+        {% for interest in interests %}'{{ interest }}'{% if not forloop.last %},{% endif %} {% endfor %}
+      ];
+    }
+}
+{% comment %} 
+  getCurrentProject() {
+    return {
+      name: '{{ current_project.name }}',
+      tech: [
+        {% for t in current_project.tech %}
+        '{{ t }}'{% if not forloop.last %},{% endif %}
+        {% endfor %}
+      ],
+      status: '{{ current_project.status }}',
+      description: '{{ current_project.description }}'
+    };
+  }
+  } {% endcomment %}
+
+  // Life motto
+  GladysOro.motto = "{{ motto }}";
+      </code></pre>
+    </div>
+  </div>
+</section>
+</code></pre>
+
+<section id="contact" class="section-content">
+  <div class="container">
+    <h2 style="text-align: left;  font-size: 2.5rem;">Contact</h2>
+
+     <!-- Display Success/Error Messages -->
+     {% if messages %}
+     <div class="messages">
+       {% for message in messages %}
+       <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">
+         {{ message }}
+       </div>
+       {% endfor %}
+     </div>
+     {% endif %}
+    
+    <div class="contact-container">
+      <!-- Social Links with Icons -->
+      <div class="social-links">
+        <h3 class ="find-me"  style="font-size: 2rem;">Find me on:</h3>
+        <div class="social-icons">
+          <a href="https://www.linkedin.com/in/glad-oro-51179b248?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" class="social-icon">
+            <img src="{% static 'images/linkedin.png' %}" alt="LinkedIn">
+     
+          <a href="https://github.com/Dev-Gladys?tab=repositories" target="_blank" class="social-icon">
+            <img src="{% static 'images/github.png' %}" alt="GitHub">
+          </a>
+       
+          <a href="mailto:ziglad.dev@gmail.com" class="social-icon">
+            <img src="{% static 'images/gmail.png' %}" alt="Email">
+          </a>
+        </div>
+      </div>
+      
+      <!-- Contact Button -->
+      <button id="contact-btn" class="btn btn-success">GET IN TOUCH</button>
+      
+       <!-- Hidden Contact Form -->
+       <div class="col-md-6">
+        <form id="contact-form" class="contact-form contact-form-hidden">
+          {% csrf_token %}
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" class="form-control" placeholder="Your Name" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" class="form-control" placeholder="Your Email" required>
+          </div>
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" class="form-control" placeholder="Your Message" rows="4" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-success">Send Message</button>
         </form>
       </div>
     </div>
   </div>
 </section>
-{% endblock %}
+{% endblock %} 

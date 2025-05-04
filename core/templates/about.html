@@ -1,4 +1,62 @@
-{% extends 'base.html' %} {% load static %} {% block content %}
+{# templates/about.html #} {% extends "base.html" %} {% block title %}About —
+Gladys Oro{% endblock %} {% block content %}
+<section id="about" class="section-content">
+  <div class="container">
+    <h2>About {{ person.name }}</h2>
+    <p><strong>Role:</strong> {{ person.role }}</p>
+    <p><strong>Location:</strong> {{ person.location }}</p>
+    <p><strong>Email:</strong> {{ person.email }}</p>
+
+    <h3>Journey</h3>
+    <ul>
+      {% for entry in journey %} {% for year, role in entry.items %}
+      <li><strong>{{ year }}:</strong> {{ role }}</li>
+      {% endfor %} {% endfor %}
+    </ul>
+
+    <h3>Expertise</h3>
+    {% for area, skills in expertise.items %}
+    <h4>{{ area }}</h4>
+    <ul>
+      {% for skill in skills %}
+      <li>{{ skill }}</li>
+      {% endfor %}
+    </ul>
+    {% endfor %}
+
+    <h3>Education</h3>
+    <ul>
+      {% for ed in education %}
+      <li>{{ ed.degree }} – {{ ed.institution }}</li>
+      {% endfor %}
+    </ul>
+
+    <h3>Certifications</h3>
+    <ul>
+      {% for cert in certifications %}
+      <li>{{ cert.name }} ({{ cert.year }})</li>
+      {% endfor %}
+    </ul>
+
+    <h3>Interests</h3>
+    <ul>
+      {% for interest in interests %}
+      <li>{{ interest }}</li>
+      {% endfor %}
+    </ul>
+
+    <h3>Current Project</h3>
+    <p>
+      <strong>{{ current_project.name }}</strong>: {{
+      current_project.description }}
+    </p>
+    <p>Status: {{ current_project.status }}</p>
+
+    <blockquote>{{ motto }}</blockquote>
+  </div>
+</section>
+{% endblock %} {% comment %} {% extends 'base.html' %} {% load static %} {%
+block content %}
 <section id="about" class="section-content">
   <div class="container">
     <h2>About Me</h2>
@@ -33,4 +91,4 @@ class <span class="class-name">GladysOro</span>:
     </div>
   </div>
 </section>
-{% endblock %}
+{% endblock %} {% endcomment %}
